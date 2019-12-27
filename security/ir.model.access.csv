@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_report_bc_doc_pemasukan,report_bc_doc_pemasukan,model_doc_pemasukan_barang,,1,1,1,1
+access_report_bc_doc_pengirimaan,report_bc_doc_pengirimaan,model_doc_pengiriman_barang,,1,1,1,1
+access_report_bc_doc_posisi_wip,report_bc_doc_posisi_wip,model_doc_posisi_wip,,1,1,1,1
+access_report_bc_doc_mutasi_bahan_baku,report_bc_doc_mutasi_bahan_baku,model_doc_mutasi_bahan_baku,,1,1,1,1
+access_report_bc_doc_mutasi_barang_jadi,report_bc_doc_mutasi_barang_jadi,model_doc_mutasi_barang_jadi,,1,1,1,1
+access_report_bc_doc_mutasi_mesin_peralatan,report_bc_doc_mutasi_mesin_peralatan,model_doc_mutasi_mesin_peralatan,,1,1,1,1
+access_report_bc_doc_mutasi_reject_scrap,report_bc_doc_mutasi_reject_scrap,model_doc_mutasi_reject_scrap,,1,1,1,1
+access_report_bc_master_data_doc,report_bc_master_data_doc,model_master_data_doc,,1,1,1,1
+access_report_bc_doc_mutasi,report_bc_doc_mutasi,model_doc_mutasi,,1,1,1,1
+access_report_bc_doc_barang,report_bc_doc_barang,model_doc_barang,,1,1,1,1
+access_report_bc_doc_wip,report_bc_doc_wip,model_doc_wip,,1,1,1,1

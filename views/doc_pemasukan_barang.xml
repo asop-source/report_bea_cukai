@@ -1,0 +1,65 @@
+<odoo>
+  <data>
+        <record id="view_pemasukan_barang_tree" model="ir.ui.view">
+            <field name="name">doc.pemasukan.barang.tree</field>
+            <field name="model">doc.pemasukan.barang</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Pemasukan Barang">
+                    <field name="name"/>
+                    <field name="jenis"/>
+                    <field name="tanggal"/>
+                    <field name="user"/>
+                </tree>
+            </field> 
+        </record>
+
+
+        <record id="view_pemasukan_barang_form" model="ir.ui.view">
+            <field name="name">doc.pemasukan.barang.form</field>
+            <field name="model">doc.pemasukan.barang</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Pemasukan Barang">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Nomor Dokumen"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="jenis"/>
+                            <field name="tanggal"/>
+                            <field name="user"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Product">
+                                 <field name="order_date">
+                                      <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="no_doc"/>
+                                        <field name="tanggal"/>
+                                        <field name="no_pengirim"/>
+                                        <field name="date_planned"/>
+                                        <field name="pengirim"/>
+                                        <field name="product_id"/>
+                                        <field name="product_qty"/>
+                                        <field name="satuan"/>
+                                        <field name="price_unit"/>
+                                        <field name="price_subtotal"/>
+                                      </tree>
+                                  </field>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+  </data>
+</odoo>

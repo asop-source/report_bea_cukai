@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="paperformat_report_mutasi_bahan_baku" model="report.paperformat">
+              <field name="name">F4 new</field>
+              <field name="default" eval="True" />
+              <field name="format">Folio</field>
+              <field name="page_height">0</field>
+              <field name="page_width">0</field>
+              <field name="orientation">Portrait</field>
+              <field name="margin_top">2</field>
+              <field name="margin_bottom">2</field>
+              <field name="margin_left">2</field>
+              <field name="margin_right">2</field>
+              <field name="header_line" eval="False" />
+              <field name="header_spacing">0</field>
+              <field name="dpi">90</field>
+          </record>
+
+        <report 
+            id="doc_report_mutasi_bahan_baku"
+            string="Laporan Mutasi Bahan Baku"
+            model="doc.mutasi.bahan.baku"
+            report_type="qweb-pdf"
+            paperformat="report_bea_cukai.paperformat_report_mutasi_bahan_baku"
+            file="report_bea_cukai.report_mutasi_bahan_baku" 
+            name="report_bea_cukai.report_mutasi_bahan_baku"/>
+
+        
+
+
+        <template id="external_layout_kontrak">
+          <t t-if="not o" t-set="o" t-value="doc"/>
+
+          <t t-if="not company">
+              <!-- Multicompany -->
+              <t t-if="company_id">
+                  <t t-set="company" t-value="company_id"/>
+              </t>
+              <t t-elif="o and 'company_id' in o">
+                  <t t-set="company" t-value="o.company_id.sudo()"/>
+              </t>
+              <t t-else="else">
+                  <t t-set="company" t-value="res_company"/>
+              </t>
+          </t>
+          <t t-call="report_bea_cukai.external_layout_standard_kontrak"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_standard_kontrak">
+          <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout"/>
+            <t t-raw="0"/>
+          </div>
+        </template>
+
+
+        <template id="doc_bahan_baku">
+          <t t-call="report_bea_cukai.external_layout_kontrak">
+                <div class="page">
+                  <thead>
+                  <t t-foreach="docs" t-as="doc">
+                      <h3 class="text-left">
+                          <span t-field="doc.user"/>
+                      </h3>
+                      <p class="text-left">
+                          <span t-field="doc.nomor"/>
+                      </p>
+                      <p class="text-left"> 
+                          <span t-field="doc.name"/>
+                      </p>
+                      <p class="text-left">
+                          <span t-field="doc.tanggal"/>
+                      </p>
+                      <p class="text-left">
+                        Laporan Pertanggungjawaban Mutasi Bahan Baku/Bahan Penolong
+                      </p>
+                    </t>
+                  </thead>
+                </div>
+
+            <div class="page">
+                <table class="table table-condensed table-bordered" style="width: 100%">
+                  <thead>
+                    <tr>
+                    <!-- <th style="border: 1px solid black;" class="text-center">No</th> -->
+                    <th style="border: 1px solid black;" class="text-center">Nama Barang</th>
+                    <th style="border: 1px solid black;" class="text-center">Satuan</th>
+                    <th style="border: 1px solid black;" class="text-center">Saldo Awal</th>
+                    <th style="border: 1px solid black;" class="text-center">Pemasukan</th>
+                    <th style="border: 1px solid black;" class="text-center">Pengeluaran</th>
+                    <th style="border: 1px solid black;" class="text-center">Penyesuaian</th>
+                    <th style="border: 1px solid black;" class="text-center">Saldo Buku</th>
+                    <th style="border: 1px solid black;" class="text-center">Stock Opname</th>
+                    <th style="border: 1px solid black;" class="text-center">Selisih</th>
+                    <th style="border: 1px solid black;" class="text-center">Keterangan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <t t-foreach="docs.order_date" t-as="o">
+                      <tr>
+                     <!--    <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.no"/></td> -->
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.product_id"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.satuan"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.saldo_awal"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.pemasukan"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.pengeluaran"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.penyesuaian"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.saldo_buku"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.stock"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.selisih"/></td>
+                        <td style="border: 1px solid black;" class="text-center">
+                          <span t-field="o.description"/></td>
+                      </tr>
+                    </t>
+                  </tbody>
+                </table>
+              </div>
+          </t>
+        </template>
+
+
+        <template id="report_mutasi_bahan_baku">
+          <t t-call="web.html_container">
+            <t t-call="report_bea_cukai.doc_bahan_baku"/>
+          </t>
+        </template>
+    </data>
+</odoo>

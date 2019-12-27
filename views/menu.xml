@@ -1,0 +1,180 @@
+<odoo>
+  <data>
+    
+    <record id="action_receipt_list" model="ir.actions.act_window">
+      <field name="name">Laporan Pemasukan Barang Per Dokumen Pabean</field>
+      <field name="res_model">doc.pemasukan.barang</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Laporan Pemasukan Barang
+          </p>
+        <p>klik tombol create untuk membuat Laporan Pemasukan Barang baru</p>
+      </field>
+    </record>
+
+    <record id="action_receiving_list" model="ir.actions.act_window">
+      <field name="name">Laporan Pengeluaran Barang Per Dokumen Pabean</field>
+      <field name="res_model">doc.pengiriman.barang</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Report Pengeluaran Barang
+          </p>
+        <p>klik tombol create untuk membuat Report Pengeluaran Barang baru</p>
+      </field>
+    </record>
+
+    <record id="action_posisi_wip" model="ir.actions.act_window">
+      <field name="name">Laporan Posisi WIP</field>
+      <field name="res_model">doc.posisi.wip</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Laporan Posisi WIP
+          </p>
+        <p>klik tombol create untuk membuat Laporan Posisi WIP Baru</p>
+      </field>
+    </record>
+
+    <record id="action_mutasi_bahan_baku" model="ir.actions.act_window">
+      <field name="name">Laporan PertanggungJawaban Mutasi Bahan Baku</field>
+      <field name="res_model">doc.mutasi.bahan.baku</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Laporan PertanggungJawaban Mutasi Bahan Baku
+          </p>
+        <p>klik tombol create untuk membuat Laporan PertanggungJawaban Mutasi Bahan Baku Baru</p>
+      </field>
+    </record>
+
+    <record id="action_mutasi_barang_jadi" model="ir.actions.act_window">
+      <field name="name">Laporan PertanggungJawaban Mutasi Barang Jadi</field>
+      <field name="res_model">doc.mutasi.barang.jadi</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Laporan PertanggungJawaban Mutasi Barang 
+          </p>
+        <p>klik tombol create untuk membuat Laporan PertanggungJawaban Mutasi Barang Baru</p>
+      </field>
+    </record>
+
+    <record id="action_mutasi_mesin_peralatan" model="ir.actions.act_window">
+      <field name="name">Laporan PertanggungJawaban Mutasi Mesin dan Peralatan</field>
+      <field name="res_model">doc.mutasi.mesin.peralatan</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Laporan PertanggungJawaban Mutasi Mesin dan Peralatan
+          </p>
+        <p>klik tombol create untuk membuat Laporan PertanggungJawaban Mutasi Mesin dan Peralatan</p>
+      </field>
+    </record>
+
+    <record id="action_mutasi_reject_scrap" model="ir.actions.act_window">
+      <field name="name">Laporan PertanggungJawaban Barang Reject dan Scrap</field>
+      <field name="res_model">doc.mutasi.reject.scrap</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Laporan PertanggungJawaban Barang Reject dan Scrap
+          </p>
+        <p>klik tombol create untuk membuat Laporan PertanggungJawaban Barang Reject dan Scrap</p>
+      </field>
+    </record>
+
+    <record id="action_master_document" model="ir.actions.act_window">
+      <field name="name">Master Data Dokuemen</field>
+      <field name="res_model">master.data.doc</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a Master Data Dokuemen
+          </p>
+        <p>klik tombol create untuk membuat Master Data Dokuemen</p>
+      </field>
+    </record>
+
+
+<!-- yang di bawah menu product request -->
+    <menuitem 
+        id="menu_request_root"
+        sequence="50"
+        name="Report Bea Cukai"
+        web_icon="report_bea_cukai,static/description/index.jpg"/>
+    <menuitem 
+        id="menu_request_sub"
+        sequence="50" 
+        parent="menu_request_root"
+        name="Dokumen Pabean"
+      />
+
+      <menuitem
+          id="menu_product_request"
+          sequence="6"
+          name="Laporan Pemasukan Barang"
+          action="action_receipt_list"
+          parent="menu_request_sub"/>
+
+      <menuitem
+          id="menu_product_request_receive2"
+          sequence="7"
+          name="Laporan Pengeluaran Barang"
+          action="action_receiving_list"
+          parent="menu_request_sub"/>
+
+      <menuitem
+          id="menu_product_request_line"
+          sequence="8"
+          name="Laporan Posisi WIP"
+          parent="menu_request_sub"
+          action="action_posisi_wip"/>   
+
+      <menuitem
+          id="menu_laporan_bahan_baku"
+          sequence="9"
+          name="Laporan Mutasi Bahan Baku"
+          parent="menu_request_sub"
+          action="action_mutasi_bahan_baku"/>   
+      <menuitem
+          id="menu_laporan_muatsi_barang_jadi"
+          sequence="10"
+          name="Laporan Mutasi Barang Jadi"
+          parent="menu_request_sub"
+          action="action_mutasi_barang_jadi"/>   
+
+      <menuitem
+          id="menu_laporan_mesin_peralatan"
+          sequence="11"
+          name="Laporan Mutasi Mesin Dan Peralatan"
+          parent="menu_request_sub"
+          action="action_mutasi_mesin_peralatan"/>   
+
+      <menuitem
+          id="menu_laporan_barang_reject_scrap"
+          sequence="12"
+          name="Laporan Mutasi Barang Reject Dan Scrap"
+          parent="menu_request_sub"
+          action="action_mutasi_reject_scrap"/> 
+      
+
+
+        <menuitem 
+          id="menu_master_dokumen"
+          sequence="60" 
+          parent="menu_request_root"
+          name="Master Data"/>
+
+        <menuitem
+          id="menu_dokumen"
+          sequence="1"
+          name="Master Dokumen"
+          parent="menu_master_dokumen"
+          action="action_master_document"
+          />
+
+      
+  </data>
+</odoo>
