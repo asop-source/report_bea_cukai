@@ -26,20 +26,8 @@ class Mutasi(models.Model):
 		def _compute_amount(self):
 			for rec in self:
 				if rec.saldo_awal>0:
-					rec.saldo_buku = rec.pemasukan - rec.pengeluaran 
-					rec.penyesuaian = rec.saldo_awal - rec.pengeluaran
+					rec.saldo_buku = rec.saldo_awal + rec.pemasukan - rec.pengeluaran + rec.penyesuaian
+					rec.selisih = rec.saldo_buku - rec.stock 
 				else:
 					rec.saldo_buku = 0.0
 					rec.penyesuaian = 0.0
-
-
-		@api.depends('saldo_buku','stock')
-		def _compute_saldo(self):
-			for rec in self:
-				if rec.stock>0:
-					rec.selisih = rec.saldo_buku - rec.stock 
-				else:
-					rec.selisih = 0.0
-
-		# def _nomor(self):
-		# 	for rec in range(self.no):
